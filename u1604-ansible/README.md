@@ -24,7 +24,9 @@ ip_addr # server ip
 
 ### One step to deploy
 
-1. `ansible-playbook ./site.yml`
+1. `ansible-playbook ./site_server.yml`
+1. `ansible-playbook -i hosts ./site_server.yml`
+1. `site_server.yml`中得要指定了roles包含server，因此roles/server/vars/main.yml可以覆盖groups_var/all里内容
 
 ### Play step by step
 
@@ -32,3 +34,7 @@ ip_addr # server ip
 2. deploy project `ansible-playbook ./playbooks/copy_project.yml`
 3. configure supervisor `ansible ./playbooks/configure_supervisor.yml`
 4. configure nginx `ansible ./playbooks/configure_nginx.yml`
+
+### Deploy with Docker
+
+1. `ansible-playbook ./site_docker.yml`
